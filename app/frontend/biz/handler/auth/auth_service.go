@@ -31,3 +31,22 @@ func Login(ctx context.Context, c *app.RequestContext) {
 
 	// utils.SendSuccessResponse(ctx, c, consts.StatusOK, "done")
 }
+
+// Register .
+// @router /auth/register [POST]
+func Register(ctx context.Context, c *app.RequestContext) {
+	var err error
+	var req auth.RegisterReq
+	err = c.BindAndValidate(&req)
+	if err != nil {
+		utils.SendErrResponse(ctx, c, consts.StatusOK, err)
+		return
+	}
+
+	_, err = service.NewRegisterService(ctx, c).Run(&req)
+	if err != nil {
+		utils.SendErrResponse(ctx, c, consts.StatusOK, err)
+		return
+	}
+	c.Redirect(consts.StatusOK, []byte("/"))
+}
