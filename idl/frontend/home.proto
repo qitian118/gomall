@@ -3,14 +3,14 @@ syntax = "proto3";
 
 package frontend.home;
 
+import "api.proto";
+import "frontend/common.proto";
+
 option go_package = "frontend/home";
 
-import "api.proto";
-
-message Empty {}
 
 service HomeService {
-   rpc Home(Empty) returns(Empty) {
+   rpc Home(common.Empty) returns(common.Empty) {
       option (api.get) = "/";
    }
 }

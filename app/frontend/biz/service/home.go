@@ -3,7 +3,7 @@ package service
 import (
 	"context"
 
-	home "github.com/cloudwego/biz-demo/gomall/app/frontend/hertz_gen/frontend/home"
+	common "github.com/cloudwego/biz-demo/gomall/app/frontend/hertz_gen/frontend/common"
 	"github.com/cloudwego/hertz/pkg/app"
 )
 
@@ -16,7 +16,7 @@ func NewHomeService(Context context.Context, RequestContext *app.RequestContext)
 	return &HomeService{RequestContext: RequestContext, Context: Context}
 }
 
-func (h *HomeService) Run(req *home.Empty) (map[string]any, error) {
+func (h *HomeService) Run(req *common.Empty) (map[string]any, error) {
 	resp := make(map[string]any)
 
 	items := []map[string]any{

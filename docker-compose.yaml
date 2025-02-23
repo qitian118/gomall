@@ -1,0 +1,19 @@
+
+services:
+  consul:
+    image: hashicorp/consul:1.20.3
+    ports:
+      - "8500:8500"
+  
+  mysql:
+    image: "mysql:latest"
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=demo_proto
+  
+  redis:
+    image: "redis:latest"
+    ports:
+      - 6379:6379
