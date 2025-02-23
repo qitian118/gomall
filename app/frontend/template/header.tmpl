@@ -23,7 +23,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link active" aria-current="page" href="/">Home</a>
         </li>
         
 
@@ -38,7 +38,7 @@
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link" >About</a>
+          <a class="nav-link" href="/about">About</a>
         </li>
       </ul>
       <form class="d-flex" role="search">
@@ -55,9 +55,12 @@
                   <span>Hello</span>
                </div>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Logout</a></li>
               <li><a class="dropdown-item" href="#">Order Center</a></li>
-
+              <li>
+                <form action="/auth/logout" method="post">
+                  <button class="dropdown-item" type="submit">Logout</button>
+                <form>
+              </li>
             </ul>
           </div>
 

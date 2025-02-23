@@ -2,7 +2,7 @@
 {{template "header" .}}
 <div class="row justify-content-center">
 <div class="col-4">
-    <form method="post" action="/auth/login">
+    <form method="post" action="/auth/login?next={{.Next}}">
     <div class="mb-3">
         <label for="email" class="form-label">Email {{template "required"}}</label>
         <input type="email" class="form-control" id="email" name="email">
