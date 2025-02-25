@@ -12,7 +12,8 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=user
-  
+    volumes:
+      - ./db/sql/ini:/docker-entrypoint-initdb.d
   redis:
     image: "redis:latest"
     ports:
