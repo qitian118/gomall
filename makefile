@@ -1,5 +1,6 @@
+export ROOT_MOD=github.com/cloudwego/biz-demo/gomall
 .PHONY:gen_frontend
-gen_frontend:cwgo server --type HTTP --idl ../../idl/frontend/home.proto --service frontend -module github.com/cloudwego/biz-demo/gomall/app/frontend -I ../../idl
+gen_frontend:cwgo server --type HTTP --idl ../../idl/frontend/home.proto --service frontend -module ${ROOT_MOD}/app/frontend -I ../../idl
 
 .PHONY: gen-demo-proto
 gen-demo-proto:
@@ -15,7 +16,7 @@ demo-link-fix:
 
 .PHONY: gen-frontend
 gen-frontend:
-	@cd app/frontend && cwgo server -I ../../idl --type HTTP --service frontend --module github.com/cloudwego/biz-demo/gomall/app/frontend --idl ../../idl/frontend/auth_page.proto
+	@cd app/frontend && cwgo server -I ../../idl --type HTTP --service frontend --module ${ROOT_MOD}/app/frontend --idl ../../idl/frontend/auth_page.proto
 
 .PHONY: gen-user
 gen-user:
