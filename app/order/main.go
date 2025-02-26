@@ -4,17 +4,22 @@ import (
 	"net"
 	"time"
 
+	"github.com/cloudwego/biz-demo/gomall/app/order/biz/dal"
+	"github.com/cloudwego/biz-demo/gomall/app/order/conf"
+	"github.com/cloudwego/biz-demo/gomall/app/order/kitex_gen/order/orderservice"
 	"github.com/cloudwego/kitex/pkg/klog"
 	"github.com/cloudwego/kitex/pkg/rpcinfo"
 	"github.com/cloudwego/kitex/server"
+	"github.com/joho/godotenv"
 	kitexlogrus "github.com/kitex-contrib/obs-opentelemetry/logging/logrus"
-	"github.com/cloudwego/biz-demo/gomall/app/order/conf"
-	"github.com/cloudwego/biz-demo/gomall/app/order/kitex_gen/order/orderservice"
+	consul "github.com/kitex-contrib/registry-consul"
 	"go.uber.org/zap/zapcore"
 	"gopkg.in/natefinch/lumberjack.v2"
 )
 
 func main() {
+	dal.Init()
+	_ = godotenv.Load()
 	opts := kitexInit()
 
 	svr := orderservice.NewServer(new(OrderServiceImpl), opts...)
@@ -31,6 +36,13 @@ func kitexInit() (opts []server.Option) {
 	if err != nil {
 		panic(err)
 	}
+
+	r, err := consul.NewConsulRegister(conf.GetConf().Registry.RegistryAddress[0])
+	if err != nil {
+		klog.Fatal(err)
+	}
+	opts = append(opts, server.WithServiceAddr(addr), server.WithRegistry(r))
+
 	opts = append(opts, server.WithServiceAddr(addr))
 
 	// service info

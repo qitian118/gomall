@@ -5,4 +5,5 @@ use (
 	./app/frontend
 	./app/product
 	./app/user
+	./app/order
 )
