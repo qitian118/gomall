@@ -14,7 +14,7 @@ type Consignee struct {
 type Order struct {
 	gorm.Model
 	OrderId      string      `gorm:"type:varchar(100);unique_index"`
-	UserId       string      `gorm:"type:int(11)"`
+	UserId       uint32      `gorm:"type:int(11)"`
 	UserCurrency string      `gorm:"type:varchar(10)"`
 	Consignee    Consignee   `gorm:"embedded"`
 	Orderitems   []OrderItem `gorm:"foreignKey:OrderIdRefer;reference:OrderId"`
