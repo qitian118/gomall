@@ -19,7 +19,7 @@ func SendSuccessResponse(ctx context.Context, c *app.RequestContext, code int, d
 	c.JSON(code, data)
 }
 
-func WarpRespond(ctx context.Context, c *app.RequestContext, content map[string]any) map[string]any {
+func WarpResponse(ctx context.Context, c *app.RequestContext, content map[string]any) map[string]any {
 	content["user_id"] = frontendUtils.GetUserIdFromCtx(ctx)
 	return content
 }
