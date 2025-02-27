@@ -2,7 +2,8 @@ package service
 
 import (
 	"context"
-	order "github.com/cloudwego/biz-demo/gomall/app/order/kitex_gen/order"
+
+	order "github.com/cloudwego/biz-demo/gomall/rpc_gen/kitex_gen/order"
 )
 
 type MarkOrderPaidService struct {
