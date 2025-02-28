@@ -12,6 +12,7 @@ services:
     command: --init-file /data/application/init.sql
     volumes:
       - ./init.sql:/data/application/init.sql
+
     environment:
       - MYSQL_ROOT_PASSWORD=root
 
