@@ -2,15 +2,15 @@ package service
 
 import (
 	"context"
+	"strconv"
+
 	"github.com/cloudwego/biz-demo/gomall/app/checkout/infra/rpc"
-	checkout "github.com/cloudwego/biz-demo/gomall/app/frontend/hertz_gen/frontend/checkout"
 	common "github.com/cloudwego/biz-demo/gomall/app/frontend/hertz_gen/frontend/common"
 	frontendutils "github.com/cloudwego/biz-demo/gomall/app/frontend/utils"
 	rpccart "github.com/cloudwego/biz-demo/gomall/rpc_gen/kitex_gen/cart"
 	rpcproduct "github.com/cloudwego/biz-demo/gomall/rpc_gen/kitex_gen/product"
 	"github.com/cloudwego/hertz/pkg/app"
 	"github.com/cloudwego/hertz/pkg/common/utils"
-	"strconv"
 )
 
 type CheckoutService struct {
@@ -31,12 +31,12 @@ func (h *CheckoutService) Run(req *common.Empty) (resp map[string]any, err error
 	var items []map[string]string
 	userId := frontendutils.GetUserIdFromCtx(h.Context)
 
-	carts, err := rpc.CartClient.GetCart(h.Context, &rpccart.GetCartReq{UserId: userId})
+	carts, err := rpc.CartClient.GetCart(h.Context, &rpccart.GetCartReq{UserId: uint32(userId)})
 	if err != nil {
 		return nil, err
 	}
 	var total float32
-	for _, v := range carts.Items {
+	for _, v := range carts.Cart.Items {
 		productResp, err := rpc.ProductClient.GetProduct(h.Context, &rpcproduct.GetProductReq{Id: v.ProductId})
 		if err != nil {
 			return nil, err
