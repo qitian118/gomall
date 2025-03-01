@@ -3,7 +3,9 @@ go 1.24.0
 use (
 	.
 	./app/frontend
+	./app/payment
 	./app/product
 	./app/user
+	app/checkout
 	./app/order
 )

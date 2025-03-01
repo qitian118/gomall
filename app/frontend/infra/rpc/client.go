@@ -3,6 +3,8 @@ package rpc
 import (
 	"sync"
 
+	"github.com/cloudwego/biz-demo/gomall/rpc_gen/kitex_gen/checkout/checkoutservice"
+
 	"github.com/cloudwego/biz-demo/gomall/app/frontend/conf"
 	frontendUtils "github.com/cloudwego/biz-demo/gomall/app/frontend/utils"
 	"github.com/cloudwego/biz-demo/gomall/rpc_gen/kitex_gen/order/orderservice"
@@ -13,9 +15,10 @@ import (
 )
 
 var (
-	UserClient    userservice.Client
-	ProductClient productcatalogservice.Client
-	OrderClient   orderservice.Client
+	UserClient     userservice.Client
+	ProductClient  productcatalogservice.Client
+	CheckoutClient checkoutservice.Client
+	OrderClient    orderservice.Client
 
 	once sync.Once
 )
@@ -24,6 +27,7 @@ func Init() {
 	once.Do(func() {
 		iniUserClient()
 		initProductClient()
+		initCheckoutClient()
 		initOrderClient()
 	})
 }
@@ -41,6 +45,14 @@ func initProductClient() {
 	frontendUtils.MustHandleError(err)
 	opts = append(opts, client.WithResolver(r))
 	ProductClient, err = productcatalogservice.NewClient("product", opts...)
+	frontendUtils.MustHandleError(err)
+}
+func initCheckoutClient() {
+	var opts []client.Option
+	r, err := consul.NewConsulResolver(conf.GetConf().Hertz.RegistryAddr)
+	frontendUtils.MustHandleError(err)
+	opts = append(opts, client.WithResolver(r))
+	CheckoutClient, err = checkoutservice.NewClient("checkout", opts...)
 	frontendUtils.MustHandleError(err)
 }
 
