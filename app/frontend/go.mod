@@ -2,8 +2,10 @@ module github.com/cloudwego/biz-demo/gomall/app/frontend
 
 go 1.23.4
 
-replace github.com/apache/thrift => github.com/apache/thrift v0.13.0
-
+replace (
+github.com/apache/thrift => github.com/apache/thrift v0.13.0
+github.com/cloudwego/biz-demo/gomall/rpc-gen => ../rpc_gen
+)
 require (
 	github.com/cloudwego/hertz v0.9.5
 	github.com/hertz-contrib/cors v0.1.0
