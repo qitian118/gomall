@@ -28,7 +28,7 @@ func Checkout(ctx context.Context, c *app.RequestContext) {
 		return
 	}
 
-	c.HTML(consts.StatusOK, "checkout", utils.WarpRespond(ctx, c, resp))
+	c.HTML(consts.StatusOK, "checkout", utils.WarpResponse(ctx, c, resp))
 }
 
 // CheckoutWaiting .
@@ -47,7 +47,7 @@ func CheckoutWaiting(ctx context.Context, c *app.RequestContext) {
 		utils.SendErrResponse(ctx, c, consts.StatusOK, err)
 		return
 	}
-	c.HTML(consts.StatusOK, "waiting", utils.WarpRespond(ctx, c, resp))
+	c.HTML(consts.StatusOK, "waiting", utils.WarpResponse(ctx, c, resp))
 
 }
 
@@ -67,6 +67,6 @@ func CheckoutResult(ctx context.Context, c *app.RequestContext) {
 		utils.SendErrResponse(ctx, c, consts.StatusOK, err)
 		return
 	}
-	c.HTML(consts.StatusOK, "result", utils.WarpRespond(ctx, c, resp))
+	c.HTML(consts.StatusOK, "result", utils.WarpResponse(ctx, c, resp))
 
 }
