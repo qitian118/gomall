@@ -2,7 +2,8 @@ package service
 
 import (
 	"context"
-	"fmt"
+	"errors"
+
 	"github.com/cloudwego/biz-demo/gomall/app/checkout/infra/rpc"
 	checkout "github.com/cloudwego/biz-demo/gomall/rpc_gen/kitex_gen/checkout"
 	"github.com/cloudwego/biz-demo/gomall/rpc_gen/kitex_gen/payment"
@@ -10,6 +11,7 @@ import (
 	"github.com/cloudwego/kitex/pkg/kerrors"
 	"github.com/cloudwego/kitex/pkg/klog"
 	"github.com/google/uuid"
+	"github.com/qitian118/gomall/rpc_gen/kitex_gen/cart"
 )
 
 type CheckoutService struct {
@@ -35,7 +37,6 @@ func (s *CheckoutService) Run(req *checkout.CheckoutReq) (resp *checkout.Checkou
 	for _, cartItem := range cartResult.Cart.Items {
 		productResp, resultErr := rpc.ProductClient.GetProduct(s.ctx, &product.GetProductReq{Id: cartItem.ProductId})
 		if resultErr != nil {
-
 			return nil, resultErr
 		}
 		if productResp.Product == nil {
