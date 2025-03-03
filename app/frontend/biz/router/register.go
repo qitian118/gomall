@@ -8,6 +8,7 @@ import (
 	category "github.com/cloudwego/biz-demo/gomall/app/frontend/biz/router/category"
 	checkout "github.com/cloudwego/biz-demo/gomall/app/frontend/biz/router/checkout"
 	home "github.com/cloudwego/biz-demo/gomall/app/frontend/biz/router/home"
+	order "github.com/cloudwego/biz-demo/gomall/app/frontend/biz/router/order"
 	product "github.com/cloudwego/biz-demo/gomall/app/frontend/biz/router/product"
 	"github.com/cloudwego/hertz/pkg/app/server"
 )
@@ -18,6 +19,8 @@ func GeneratedRegister(r *server.Hertz) {
 	cart.Register(r)
 
 	checkout.Register(r)
+
+	order.Register(r)
 
 	product.Register(r)
 

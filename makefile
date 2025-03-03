@@ -16,11 +16,16 @@ demo-link-fix:
 
 .PHONY: gen-frontend
 gen-frontend:
-	@cd app/frontend && cwgo server -I ../../idl --type HTTP --service frontend --module github.com/cloudwego/biz-demo/gomall/app/frontend --idl ../../idl/frontend/category_page.proto
+	@cd app/frontend && cwgo server -I ../../idl --type HTTP --service frontend --module ${ROOT_MOD}/app/frontend --idl ../../idl/frontend/order_page.proto
 
 .PHONY: gen-user
 gen-user:
 	@cd app/user && cwgo server --type RPC  --service user --module  ${ROOT_MOD}/app/user  --pass "-use  ${ROOT_MOD}/rpc_gen/kitex_gen" -I ../../idl  --idl ../../idl/user.proto
+# 添加了go mod init 使其定位到包名
+.PHONY: gen-order
+gen-order:
+	@cd rpc_gen && cwgo client --type RPC --service order --module ${ROOT_MOD}/rpc_gen -I ../idl --idl ../idl/order.proto
+	@cd app/order && go mod init github.com/cloudwego/biz-demo/gomall/app/order && cwgo server --type RPC  --service order --module  ${ROOT_MOD}/app/order  --pass "-use  ${ROOT_MOD}/rpc_gen/kitex_gen" -I ../../idl  --idl ../../idl/order.proto
 
 .PHONY: gen-payment
 gen-user:
