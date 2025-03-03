@@ -35,7 +35,6 @@ func (s *DeliverTokenByRPCService) Run(req *auth.DeliverTokenReq) (resp *auth.De
 		UserId: req.UserId,
 		RegisteredClaims: jwt.RegisteredClaims{
 			ExpiresAt: jwt.NewNumericDate(time.Now().Add(24 * time.Hour)),
-			Issuer:    "your-app-name",
 		},
 	}
 

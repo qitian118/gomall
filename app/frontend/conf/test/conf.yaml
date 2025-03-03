@@ -4,7 +4,7 @@ hertz:
   enable_pprof: true
   enable_gzip: true
   enable_access_log: true
-  log_level: info
+  log_level: debug
   log_file_name: "log/hertz.log"
   log_max_size: 10
   log_max_age: 3

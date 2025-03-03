@@ -7,5 +7,7 @@ use (
 	./app/payment
 	./app/product
 	./app/user
+	./app/order
+	./app/cart
 	app/checkout
 )

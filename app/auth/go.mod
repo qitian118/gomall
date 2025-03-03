@@ -6,7 +6,6 @@ replace github.com/apache/thrift => github.com/apache/thrift v0.13.0
 
 replace github.com/cloudwego/biz-demo/gomall/rpc_gen => ../../rpc_gen
 
-replace github.com/qitian118/gomall/rpc_gen/ => ../../rpc_gen
 
 require (
 	github.com/casbin/casbin/v2 v2.103.0

@@ -2,11 +2,8 @@ package main
 
 import (
 	"net"
-	"path/filepath"
 	"time"
 
-	"github.com/casbin/casbin/v2"
-	"github.com/cloudwego/biz-demo/gomall/app/auth/biz/middleware"
 	"github.com/cloudwego/biz-demo/gomall/app/auth/conf"
 	"github.com/cloudwego/biz-demo/gomall/rpc_gen/kitex_gen/auth/authservice"
 	"github.com/cloudwego/kitex/pkg/klog"
@@ -22,23 +19,23 @@ func main() {
 
 	svr := authservice.NewServer(new(AuthServiceImpl), opts...)
 
-	// initcasbin
-	modelPath := filepath.Join("conf/casbin", "model.conf")
-	policyPath := filepath.Join("conf/casbin", "policy.csv")
+	// // initcasbin
+	// modelPath := filepath.Join("conf/casbin", "model.conf")
+	// policyPath := filepath.Join("conf/casbin", "policy.csv")
 
-	enforcer, err := casbin.NewEnforcer(modelPath, policyPath)
-	if err != nil {
-		panic(err)
-	}
+	// enforcer, err := casbin.NewEnforcer(modelPath, policyPath)
+	// if err != nil {
+	// 	panic(err)
+	// }
 
-	opts = append(opts, server.WithMiddleware(
-		middleware.ChainMiddleware(
-			middleware.JWTAuthMiddleware,
-			middleware.CasbinMiddleware(enforcer),
-		),
-	))
+	// opts = append(opts, server.WithMiddleware(
+	// 	middleware.ChainMiddleware(
+	// 		middleware.JWTAuthMiddleware,
+	// 		middleware.CasbinMiddleware(enforcer),
+	// 	),
+	// ))
 
-	err = svr.Run()
+	err := svr.Run()
 	if err != nil {
 		klog.Error(err.Error())
 	}
