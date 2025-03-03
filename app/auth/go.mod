@@ -11,6 +11,7 @@ replace github.com/qitian118/gomall/rpc_gen/ => ../../rpc_gen
 require (
 	github.com/casbin/casbin/v2 v2.103.0
 	github.com/cloudwego/biz-demo/gomall/rpc_gen v0.0.0-00010101000000-000000000000
+	github.com/cloudwego/hertz v0.9.6
 	github.com/cloudwego/kitex v0.12.3
 	github.com/golang-jwt/jwt/v5 v5.2.1
 	github.com/kitex-contrib/obs-opentelemetry/logging/logrus v0.0.0-20241120035129-55da83caab1b
@@ -38,7 +39,6 @@ require (
 	github.com/cloudwego/fastpb v0.0.5 // indirect
 	github.com/cloudwego/frugal v0.2.4 // indirect
 	github.com/cloudwego/gopkg v0.1.4 // indirect
-	github.com/cloudwego/hertz v0.9.6 // indirect
 	github.com/cloudwego/iasm v0.2.0 // indirect
 	github.com/cloudwego/localsession v0.1.2 // indirect
 	github.com/cloudwego/netpoll v0.6.5 // indirect
