@@ -9,5 +9,5 @@ use (
 	./app/product
 	./app/user
 	./app/order
-	app/checkout
+	./app/checkout
 )
