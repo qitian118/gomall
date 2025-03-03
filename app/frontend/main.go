@@ -48,6 +48,13 @@ func main() {
 	h.LoadHTMLGlob("template/*")
 	h.Static("/static", "./")
 
+	ProtectGroup := h.Group("/protect")
+	ProtectGroup.Use(middleware.AuthMiddleware())
+
+	ProtectGroup.GET("/about", func(c context.Context, ctx *app.RequestContext) {
+		ctx.HTML(consts.StatusOK, "about", utils.H{"Title": "About"})
+	})
+
 	h.GET("/about", func(c context.Context, ctx *app.RequestContext) {
 		ctx.HTML(consts.StatusOK, "about", utils.H{"Title": "About"})
 	})

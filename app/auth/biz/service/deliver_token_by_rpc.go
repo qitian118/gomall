@@ -23,7 +23,7 @@ type CustomClaims struct {
 	jwt.RegisteredClaims
 }
 
-var secretKey = []byte("your-256-bit-secret")
+var secretKey = []byte("ISHDSDAJKDH")
 
 // Run create note info
 func (s *DeliverTokenByRPCService) Run(req *auth.DeliverTokenReq) (resp *auth.DeliveryResp, err error) {

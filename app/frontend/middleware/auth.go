@@ -3,7 +3,9 @@ package middleware
 import (
 	"context"
 
+	"github.com/cloudwego/biz-demo/gomall/app/frontend/infra/rpc"
 	frontendUtils "github.com/cloudwego/biz-demo/gomall/app/frontend/utils"
+	"github.com/cloudwego/biz-demo/gomall/rpc_gen/kitex_gen/auth"
 	"github.com/cloudwego/hertz/pkg/app"
 	"github.com/hertz-contrib/sessions"
 )
@@ -25,6 +27,58 @@ func Auth() app.HandlerFunc {
 			c.Abort()
 			return
 		}
+		c.Next(ctx)
+	}
+}
+
+func AuthMiddleware() app.HandlerFunc {
+	return func(ctx context.Context, c *app.RequestContext) {
+		// 从Header获取token
+		s := sessions.Default(c)
+		// s.Set("next", c.Request.URI().String())
+		userIDVal := s.Get("user_id")
+		if userIDVal == nil {
+
+			// c.AbortWithStatusJSON(http.StatusUnauthorized, map[string]string{"error": "Missing user ID"})
+			// fmt.Println("after abort")
+			c.Redirect(302, []byte("/sign-in"))
+			c.Abort()
+			// fmt.Println("after redirect")
+
+			return
+		}
+		userId, ok := userIDVal.(int32)
+		if !ok {
+			c.Redirect(302, []byte("/sign-in"))
+			c.Abort()
+			return
+		}
+		tokenVal := s.Get("token")
+		if tokenVal == nil {
+			c.Redirect(302, []byte("/sign-in"))
+			c.Abort()
+			return
+		}
+		token, ok := tokenVal.(string)
+		if !ok {
+			c.Redirect(302, []byte("/sign-in"))
+			c.Abort()
+			return
+		}
+
+		// 调用Auth服务验证
+		resp, err := rpc.AuthClient.VerifyTokenByRPC(ctx, &auth.VerifyTokenReq{
+			Token: token,
+		})
+
+		if err != nil || !resp.Res {
+			c.Redirect(302, []byte("/sign-in"))
+			c.Abort()
+			return
+		}
+
+		// 注入用户信息到上下文
+		c.Set("user_id", userId)
 		c.Next(ctx)
 	}
 }

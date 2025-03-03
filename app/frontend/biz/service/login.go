@@ -3,9 +3,9 @@ package service
 import (
 	"context"
 
+	"github.com/cloudwego/biz-demo/gomall/app/frontend/biz/utils"
 	auth "github.com/cloudwego/biz-demo/gomall/app/frontend/hertz_gen/frontend/auth"
 	"github.com/cloudwego/biz-demo/gomall/app/frontend/infra/rpc"
-	rpcauth "github.com/cloudwego/biz-demo/gomall/rpc_gen/kitex_gen/auth"
 	"github.com/cloudwego/biz-demo/gomall/rpc_gen/kitex_gen/user"
 	"github.com/cloudwego/hertz/pkg/app"
 	"github.com/hertz-contrib/sessions"
@@ -33,13 +33,13 @@ func (h *LoginService) Run(req *auth.LoginReq) (redirect string, err error) {
 	if err != nil {
 		return "login failed", err
 	}
-	deliveryResp, err := rpc.AuthClient.DeliverTokenByRPC(h.Context, &rpcauth.DeliverTokenReq{UserId: resp.UserId})
+	token, err := utils.GetToken(resp.UserId, h.Context)
 	if err != nil {
 		return "deliver token failed", err
 	}
 	session := sessions.Default(h.RequestContext)
 	session.Set("user_id", resp.UserId)
-	session.Set("token", deliveryResp.Token)
+	session.Set("token", token)
 
 	err = session.Save()
 	if err != nil {
