@@ -5,13 +5,13 @@ import (
 	"errors"
 
 	"github.com/cloudwego/biz-demo/gomall/app/checkout/infra/rpc"
+	"github.com/cloudwego/biz-demo/gomall/rpc_gen/kitex_gen/cart"
 	checkout "github.com/cloudwego/biz-demo/gomall/rpc_gen/kitex_gen/checkout"
 	"github.com/cloudwego/biz-demo/gomall/rpc_gen/kitex_gen/payment"
 	"github.com/cloudwego/biz-demo/gomall/rpc_gen/kitex_gen/product"
 	"github.com/cloudwego/kitex/pkg/kerrors"
 	"github.com/cloudwego/kitex/pkg/klog"
 	"github.com/google/uuid"
-	"github.com/qitian118/gomall/rpc_gen/kitex_gen/cart"
 )
 
 type CheckoutService struct {
