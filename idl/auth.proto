@@ -11,6 +11,9 @@ service AuthService {
 
 message DeliverTokenReq {
     int32  user_id= 1;
+    string user_role = 2; 
+    string resource =3 ;  
+    string action =4;  
 }
 
 message VerifyTokenReq {
