@@ -27,10 +27,7 @@ var secretKey = []byte("your-256-bit-secret")
 
 // Run create note info
 func (s *DeliverTokenByRPCService) Run(req *auth.DeliverTokenReq) (resp *auth.DeliveryResp, err error) {
-	// Finish your business logic.
-	// Finish your business logic.
-	//这里中间件会放行分发操作
-
+	// Finish your business logic.claims := CustomClaims{
 	claims := CustomClaims{
 		UserId: req.UserId,
 		RegisteredClaims: jwt.RegisteredClaims{

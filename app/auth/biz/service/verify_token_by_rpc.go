@@ -16,6 +16,6 @@ func NewVerifyTokenByRPCService(ctx context.Context) *VerifyTokenByRPCService {
 // Run create note info
 func (s *VerifyTokenByRPCService) Run(req *auth.VerifyTokenReq) (resp *auth.VerifyResp, err error) {
 	// Finish your business logic.
-
 	return &auth.VerifyResp{Res: true}, nil
+	return
 }

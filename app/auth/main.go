@@ -4,36 +4,26 @@ import (
 	"net"
 	"time"
 
+	"github.com/cloudwego/biz-demo/gomall/app/auth/biz/dal"
 	"github.com/cloudwego/biz-demo/gomall/app/auth/conf"
 	"github.com/cloudwego/biz-demo/gomall/rpc_gen/kitex_gen/auth/authservice"
 	"github.com/cloudwego/kitex/pkg/klog"
 	"github.com/cloudwego/kitex/pkg/rpcinfo"
 	"github.com/cloudwego/kitex/server"
+	"github.com/joho/godotenv"
 	kitexlogrus "github.com/kitex-contrib/obs-opentelemetry/logging/logrus"
+	consul "github.com/kitex-contrib/registry-consul"
 	"go.uber.org/zap/zapcore"
 	"gopkg.in/natefinch/lumberjack.v2"
 )
 
 func main() {
+	_ = godotenv.Load()
+
+	dal.Init()
 	opts := kitexInit()
 
 	svr := authservice.NewServer(new(AuthServiceImpl), opts...)
-
-	// // initcasbin
-	// modelPath := filepath.Join("conf/casbin", "model.conf")
-	// policyPath := filepath.Join("conf/casbin", "policy.csv")
-
-	// enforcer, err := casbin.NewEnforcer(modelPath, policyPath)
-	// if err != nil {
-	// 	panic(err)
-	// }
-
-	// opts = append(opts, server.WithMiddleware(
-	// 	middleware.ChainMiddleware(
-	// 		middleware.JWTAuthMiddleware,
-	// 		middleware.CasbinMiddleware(enforcer),
-	// 	),
-	// ))
 
 	err := svr.Run()
 	if err != nil {
@@ -49,10 +39,12 @@ func kitexInit() (opts []server.Option) {
 	}
 	opts = append(opts, server.WithServiceAddr(addr))
 
+	r, err := consul.NewConsulRegister(conf.GetConf().Registry.RegistryAddress[0])
+
 	// service info
 	opts = append(opts, server.WithServerBasicInfo(&rpcinfo.EndpointBasicInfo{
 		ServiceName: conf.GetConf().Kitex.Service,
-	}))
+	}), server.WithRegistry(r))
 
 	// klog
 	logger := kitexlogrus.NewLogger()
