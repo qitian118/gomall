@@ -48,9 +48,9 @@
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
-        <div class="ms-3">
-          <i class="fa-solid fa-cart-shopping fa-xl"></i>
-        </div>
+      
+        {{ template "cart-num" . }}
+
         {{if .user_id}}
           <div class="dropdown">
                <div class="ms-3 dropdown-toggle" data-bs-toggle="dropdown">
