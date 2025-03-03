@@ -2,8 +2,10 @@ module github.com/cloudwego/biz-demo/gomall/app/cart
 
 go 1.24.0
 
-replace github.com/apache/thrift => github.com/apache/thrift v0.13.0
-
+replace (
+	github.com/apache/thrift => github.com/apache/thrift v0.13.0
+	github.com/cloudwego/biz-demo/gomall/rpc_gen => ../../rpc_gen
+)
 require (
 	github.com/cloudwego/biz-demo/gomall/rpc_gen v0.0.0-20250221030954-58f21ff9d9c9
 	github.com/cloudwego/kitex v0.12.3
