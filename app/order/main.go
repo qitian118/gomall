@@ -18,8 +18,10 @@ import (
 )
 
 func main() {
-	dal.Init()
 	_ = godotenv.Load()
+
+	dal.Init()
+
 	opts := kitexInit()
 
 	svr := orderservice.NewServer(new(OrderServiceImpl), opts...)
@@ -36,7 +38,6 @@ func kitexInit() (opts []server.Option) {
 	if err != nil {
 		panic(err)
 	}
-
 	r, err := consul.NewConsulRegister(conf.GetConf().Registry.RegistryAddress[0])
 	if err != nil {
 		klog.Fatal(err)
