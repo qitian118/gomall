@@ -28,13 +28,13 @@ func (s *CheckoutService) Run(req *checkout.CheckoutReq) (resp *checkout.Checkou
 	if err != nil {
 		return nil, kerrors.NewGRPCBizStatusError(5005001, err.Error())
 	}
-	if cartResult == nil || cartResult.Cart.Items == nil {
+	if cartResult == nil || cartResult.Items == nil {
 		err = errors.New("cart is empty")
 		return nil, kerrors.NewGRPCBizStatusError(5004001, "cart is empty")
 
 	}
 	var total float32
-	for _, cartItem := range cartResult.Cart.Items {
+	for _, cartItem := range cartResult.Items {
 		productResp, resultErr := rpc.ProductClient.GetProduct(s.ctx, &product.GetProductReq{Id: cartItem.ProductId})
 		if resultErr != nil {
 			return nil, resultErr
