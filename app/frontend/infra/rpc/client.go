@@ -33,6 +33,7 @@ func Init() {
 		initCheckoutClient()
 		initAuthClient()
 		initOrderClient()
+		initCartClient()
 	})
 }
 
