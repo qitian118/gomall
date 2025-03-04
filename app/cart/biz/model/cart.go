@@ -19,11 +19,12 @@ func (Cart) TableName() string {
 }
 
 func AddItem(ctx context.Context, db *gorm.DB, item *Cart) error {
+
 	var row Cart
 	err := db.WithContext(ctx).
 		Model(&Cart{}).
 		Where(&Cart{UserId: item.UserId, ProductId: item.ProductId}).
-		First(&row).Error
+		First(&row).Error // 此处第一次调用时会报错，因为记录是在该函数返回时创建的
 	if err != nil && !errors.Is(err, gorm.ErrRecordNotFound) {
 		return err
 	}
