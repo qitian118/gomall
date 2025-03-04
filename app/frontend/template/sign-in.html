@@ -1,0 +1,28 @@
+{{define "sign-in"}}
+{{template "header" .}}
+<!-- 设置main的最低高度，设置为80%的视口大小 -->
+
+<div class="row justify-content-center">
+    <div class="col-4">
+                <!-- 如果next存在，则将next作为参数传递给登录接口 -->
+                <form method="POST" action="/auth/login?next={{.Next}}">
+                    
+                    <div class="mb-3">
+                    <label for="email" class="form-label">Email address{{template "required"}}</label>
+                    <input type="email" class="form-control" id="email" name="email">
+                    
+                    </div>
+                    <div class="mb-3">
+                    <label for="password" class="form-label">Password{{template "required"}}</label>
+                    <input type="password" class="form-control" id="password" name="password">
+                    </div>
+                    <div class="mb-3">
+                        没有账号?点击这里<a href="/sign-up">注册</a>!
+                    </div>
+                    <button type="submit" class="btn btn-primary">Sign in</button>
+                </form>
+    </div>
+</div>
+<main style="min-height: calc(70vh);"></main>
+{{template "footer" .}}
+{{end}}

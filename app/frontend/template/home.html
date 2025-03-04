@@ -1,0 +1,24 @@
+{{ template "header" .}}
+     <main>
+        <div>Debug: {{.}}</div> <!-- 打印整个数据 -->
+        <div class="container-fluid">
+            {{if .Items}}
+            {{range .Items}}
+            <div class="row">
+                <div class="card col-xl-3 col-md-6 col-sm-12 p-2 border-0" style="width: 18rem;">
+                    <img src="{{.Picture}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">{{.Name}}</h5>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <h5 class="card-title">￥{{.Price}}</h5>
+                    </div>
+                </div>
+            </div>
+            {{end}}
+            {{else}}
+            <p>没有商品信息</p>
+            {{end}}
+        </div>
+     </main>
+     <!-- .的作用：将home_service.go中的request数据传递给模板，让模板可以访问request中的数据 -->
+{{ template "footer" .}} 

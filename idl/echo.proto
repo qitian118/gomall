@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package pbapi;
+
+// 必须以/开头
+option go_package = "/pbapi";
+
+message Request {
+    string message = 1;
+}
+
+message Response {
+    string message = 1;
+}
+
+service EchoService {
+    rpc Echo (Request) returns (Response) {}
+}

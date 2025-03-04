@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package user;
+
+// 必须以/开头
+option go_package = "/user";
+
+
+message RegisterReq {
+    string email = 1;
+    string password = 2;
+    string password_confirm = 3;
+}
+
+message RegisterResp {
+   int32 user_id = 1;
+}
+
+message LoginReq {
+    string email = 1;
+    string password = 2;
+}
+
+message LoginResp {
+   int32 user_id = 1;
+}
+
+service UserService {
+    rpc Register (RegisterReq) returns (RegisterResp) {}
+    rpc Login (LoginReq) returns (LoginResp) {}
+}

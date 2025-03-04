@@ -1,0 +1,1 @@
+module github.com/gomall_project/app/frontend

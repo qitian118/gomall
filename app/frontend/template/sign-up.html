@@ -1,0 +1,37 @@
+{{define "sign-up"}}
+{{template "header" .}}
+<!-- 设置main的最低高度，设置为80%的视口大小 -->
+
+<div class="row justify-content-center">
+    <div class="col-4">
+                <form method="POST" action="/auth/register">
+                    
+                    <div class="mb-3">
+                    <label for="email" class="form-label">Email address{{template "required"}}</label>
+                    <input type="email" class="form-control" id="email" name="email">
+                    
+                    </div>
+                    <div class="mb-3">
+                    <label for="password" class="form-label">Password{{template "required"}}</label>
+                    <input type="password" class="form-control" id="password" name="password">
+                    </div>
+                            <!-- 确认密码 -->
+                    <div class="mb-3">
+                        <label for="password_confirm" class="form-label">Password Confirm{{template "required"}}</label>
+                        <input type="password" class="form-control" id="password_confirm" name="password_confirm">
+                    </div>
+
+                    <div class="mb-3">
+                        已有账号?点击这里<a href="/sign-in">登录</a>!
+
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Sign up</button>
+                  
+                </form>
+        </div>
+    </div>
+</main>
+<main style="min-height: calc(70vh);"></main>
+{{template "footer" .}}
+{{end}}

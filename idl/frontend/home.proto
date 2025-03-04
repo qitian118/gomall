@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+
+package frontend.home;
+
+import "idl/api.proto";
+import "idl/frontend/common.proto";
+
+option go_package = "frontend/home";
+
+
+service HomeService {
+    rpc Home(common.Empty) returns(common.Empty) {
+        option (api.get) = "/";
+    }
+}
