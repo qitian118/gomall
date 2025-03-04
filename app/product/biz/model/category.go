@@ -24,7 +24,7 @@ type CategoryQuery struct {
 }
 
 func (c CategoryQuery) GetProductsByCategoryName(name string) (categories []Category, err error) {
-	err = c.db.WithContext(c.ctx).Model(&Category{}).Where(&Category{Name: name}).Preload("products").Find(&categories).Error
+	err = c.db.WithContext(c.ctx).Model(&Category{}).Where(&Category{Name: name}).Preload("Products").Find(&categories).Error
 	return
 }
 

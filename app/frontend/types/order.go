@@ -8,8 +8,8 @@ type OrderItem struct {
 }
 
 type Order struct {
-	OrderId   string
-	CreatDate string
-	Cost      float32
-	Items     []OrderItem
+	OrderId     string
+	CreatedDate string
+	Cost        float32
+	Items       []OrderItem
 }

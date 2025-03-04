@@ -70,10 +70,10 @@ func (h *OrderListService) Run(req *common.Empty) (resp map[string]any, err erro
 		}
 
 		list = append(list, types.Order{
-			OrderId:   v.OrderId,
-			CreatDate: created.Format("2006-01-02 15:04:05"),
-			Cost:      total,
-			Items:     items,
+			OrderId:     v.OrderId,
+			CreatedDate: created.Format("2006-01-02 15:04:05"),
+			Cost:        total,
+			Items:       items,
 		})
 	}
 

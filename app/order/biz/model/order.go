@@ -12,7 +12,7 @@ type Consignee struct {
 	City          string
 	State         string
 	Country       string
-	ZipCode       int32
+	ZipCode       string
 }
 
 type Order struct {
