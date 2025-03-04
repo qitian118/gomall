@@ -4,8 +4,8 @@ import (
 	"context"
 	"strconv"
 
-	"github.com/cloudwego/biz-demo/gomall/app/checkout/infra/rpc"
 	common "github.com/cloudwego/biz-demo/gomall/app/frontend/hertz_gen/frontend/common"
+	"github.com/cloudwego/biz-demo/gomall/app/frontend/infra/rpc"
 	frontendutils "github.com/cloudwego/biz-demo/gomall/app/frontend/utils"
 	rpccart "github.com/cloudwego/biz-demo/gomall/rpc_gen/kitex_gen/cart"
 	rpcproduct "github.com/cloudwego/biz-demo/gomall/rpc_gen/kitex_gen/product"
@@ -30,7 +30,6 @@ func (h *CheckoutService) Run(req *common.Empty) (resp map[string]any, err error
 	// todo edit your code
 	var items []map[string]string
 	userId := frontendutils.GetUserIdFromCtx(h.Context)
-
 	carts, err := rpc.CartClient.GetCart(h.Context, &rpccart.GetCartReq{UserId: uint32(userId)})
 	if err != nil {
 		return nil, err
