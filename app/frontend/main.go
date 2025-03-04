@@ -8,6 +8,7 @@ import (
 	"time"
 
 	"github.com/cloudwego/biz-demo/gomall/app/frontend/biz/router"
+	frontendUtils "github.com/cloudwego/biz-demo/gomall/app/frontend/biz/utils"
 	"github.com/cloudwego/biz-demo/gomall/app/frontend/conf"
 	"github.com/cloudwego/biz-demo/gomall/app/frontend/infra/rpc"
 	"github.com/cloudwego/biz-demo/gomall/app/frontend/middleware"
@@ -52,11 +53,11 @@ func main() {
 	ProtectGroup.Use(middleware.AuthMiddleware())
 
 	ProtectGroup.GET("/about", func(c context.Context, ctx *app.RequestContext) {
-		ctx.HTML(consts.StatusOK, "about", utils.H{"Title": "About"})
+		ctx.HTML(consts.StatusOK, "about", frontendUtils.WarpResponse(c, ctx, utils.H{"Title": "About"}))
 	})
 
 	h.GET("/about", func(c context.Context, ctx *app.RequestContext) {
-		ctx.HTML(consts.StatusOK, "about", utils.H{"Title": "About"})
+		ctx.HTML(consts.StatusOK, "about", frontendUtils.WarpResponse(c, ctx, utils.H{"Title": "About"}))
 	})
 
 	h.GET("/sign-in", func(c context.Context, ctx *app.RequestContext) {
