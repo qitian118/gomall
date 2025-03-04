@@ -9,7 +9,7 @@ import (
 
 func rootMw() []app.HandlerFunc {
 	// your code...
-	return []app.HandlerFunc{middleware.Auth()}
+	return []app.HandlerFunc{middleware.AuthMiddleware()}
 }
 
 func _checkoutMw() []app.HandlerFunc {
