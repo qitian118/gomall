@@ -51,7 +51,7 @@ func (s *PlaceOrderService) Run(req *order.PlaceOrderReq) (resp *order.PlaceOrde
 			items = append(items, model.OrderItem{
 				OrderIdRefer: orderId.String(),
 				ProductId:    v.Item.ProductId,
-				Quantity:     int32(v.Item.Quantity),
+				Quantity:     v.Item.Quantity,
 				Cost:         v.Cost,
 			})
 		}
