@@ -8,10 +8,12 @@ import (
 	"time"
 
 	"github.com/cloudwego/biz-demo/gomall/app/frontend/biz/router"
-	frontendUtils "github.com/cloudwego/biz-demo/gomall/app/frontend/biz/utils"
+	frontendBizUtils "github.com/cloudwego/biz-demo/gomall/app/frontend/biz/utils"
 	"github.com/cloudwego/biz-demo/gomall/app/frontend/conf"
 	"github.com/cloudwego/biz-demo/gomall/app/frontend/infra/rpc"
 	"github.com/cloudwego/biz-demo/gomall/app/frontend/middleware"
+	frontendUtils "github.com/cloudwego/biz-demo/gomall/app/frontend/utils"
+	"github.com/cloudwego/biz-demo/gomall/common/mtl"
 	"github.com/cloudwego/hertz/pkg/app"
 	"github.com/cloudwego/hertz/pkg/app/middlewares/server/recovery"
 	"github.com/cloudwego/hertz/pkg/app/server"
@@ -22,6 +24,7 @@ import (
 	"github.com/hertz-contrib/gzip"
 	"github.com/hertz-contrib/logger/accesslog"
 	hertzlogrus "github.com/hertz-contrib/logger/logrus"
+	prometheus "github.com/hertz-contrib/monitor-prometheus"
 	"github.com/hertz-contrib/pprof"
 	"github.com/hertz-contrib/sessions"
 	"github.com/hertz-contrib/sessions/redis"
@@ -30,13 +33,26 @@ import (
 	"gopkg.in/natefinch/lumberjack.v2"
 )
 
+var (
+	ServiceName  = frontendUtils.ServiceName
+	MetricsPort  = conf.GetConf().Hertz.MetricsPort
+	RegistryAddr = conf.GetConf().Hertz.RegistryAddr
+)
+
 func main() {
 	_ = godotenv.Load()
 	// init dal
 	// dal.Init()
+	consul, registryInfo := mtl.InitMetric(ServiceName, MetricsPort, RegistryAddr)
+	defer consul.Deregister(registryInfo)
 	rpc.Init()
 	address := conf.GetConf().Hertz.Address
-	h := server.New(server.WithHostPorts(address))
+	h := server.New(server.WithHostPorts(address), server.WithTracer(prometheus.NewServerTracer(
+		"",
+		"",
+		prometheus.WithDisableServer(true),
+		prometheus.WithRegistry(mtl.Registry),
+	)))
 
 	registerMiddleware(h)
 
@@ -57,7 +73,7 @@ func main() {
 	// })
 
 	h.GET("/about", func(c context.Context, ctx *app.RequestContext) {
-		ctx.HTML(consts.StatusOK, "about", frontendUtils.WarpResponse(c, ctx, utils.H{"Title": "About"}))
+		ctx.HTML(consts.StatusOK, "about", frontendBizUtils.WarpResponse(c, ctx, utils.H{"Title": "About"}))
 	})
 
 	h.GET("/sign-in", func(c context.Context, ctx *app.RequestContext) {
