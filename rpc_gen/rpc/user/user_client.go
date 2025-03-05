@@ -2,12 +2,11 @@ package user
 
 import (
 	"context"
-
 	user "github.com/qitian118/gomall/rpc_gen/kitex_gen/user"
 
+	"github.com/qitian118/gomall/rpc_gen/kitex_gen/user/userservice"
 	"github.com/cloudwego/kitex/client"
 	"github.com/cloudwego/kitex/client/callopt"
-	"github.com/qitian118/gomall/rpc_gen/kitex_gen/user/userservice"
 )
 
 type RPCClient interface {

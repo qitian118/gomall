@@ -6,6 +6,7 @@ type User struct {
 	gorm.Model
 	Email          string `gorm:"uniqueIndex;type:varchar(255) not null"`
 	PasswordHashed string `gorm:"type:varchar(255) not null"`
+	Rule           string `gorm:"type:varchar(255) not null"`
 }
 
 func (User) TableName() string {
@@ -13,6 +14,7 @@ func (User) TableName() string {
 }
 
 func Creat(db *gorm.DB, user *User) error {
+	user.Rule = "user"
 	return db.Create(user).Error
 }
 

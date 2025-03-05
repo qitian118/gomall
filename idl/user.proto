@@ -27,6 +27,7 @@ message UserInfoReq{
 }
 message UserInfoResp{
     string email=1;
+    string rule=2;
 }
 
 service UserService {

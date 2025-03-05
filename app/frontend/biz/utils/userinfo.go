@@ -22,5 +22,6 @@ func UserInfo(ctx context.Context, c *app.RequestContext, content map[string]any
 		return content
 	}
 	content["email"] = resp.Email
+	content["rule"] = resp.Rule
 	return content
 }

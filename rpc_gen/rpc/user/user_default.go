@@ -2,10 +2,9 @@ package user
 
 import (
 	"context"
-
+	user "github.com/qitian118/gomall/rpc_gen/kitex_gen/user"
 	"github.com/cloudwego/kitex/client/callopt"
 	"github.com/cloudwego/kitex/pkg/klog"
-	user "github.com/qitian118/gomall/rpc_gen/kitex_gen/user"
 )
 
 func Register(ctx context.Context, req *user.RegisterReq, callOptions ...callopt.Option) (resp *user.RegisterResp, err error) {

@@ -2,8 +2,8 @@
 package userservice
 
 import (
-	user "github.com/qitian118/gomall/rpc_gen/kitex_gen/user"
 	server "github.com/cloudwego/kitex/server"
+	user "github.com/qitian118/gomall/rpc_gen/kitex_gen/user"
 )
 
 // NewServer creates a server.Server with the given handler and options.

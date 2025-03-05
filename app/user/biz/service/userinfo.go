@@ -28,6 +28,7 @@ func (s *UserInfoService) Run(req *user.UserInfoReq) (resp *user.UserInfoResp, e
 
 	resp = &user.UserInfoResp{
 		Email: row.Email,
+		Rule:  row.Rule,
 	}
 	// if req.Email == "" || req.Password == "" {
 	// 	return nil, errors.New("email or password is empty")
