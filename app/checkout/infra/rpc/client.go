@@ -9,6 +9,7 @@ import (
 	consul "github.com/kitex-contrib/registry-consul"
 
 	"github.com/cloudwego/biz-demo/gomall/app/checkout/conf"
+	"github.com/cloudwego/biz-demo/gomall/common/clientsuite"
 	"github.com/cloudwego/biz-demo/gomall/rpc_gen/kitex_gen/cart/cartservice"
 	"github.com/cloudwego/biz-demo/gomall/rpc_gen/kitex_gen/order/orderservice"
 	"github.com/cloudwego/biz-demo/gomall/rpc_gen/kitex_gen/payment/paymentservice"
@@ -23,6 +24,8 @@ var (
 	OrderClient   orderservice.Client
 	once          sync.Once
 	err           error
+	ServiceName   = conf.GetConf().Kitex.Service
+	RegistryAddr  = conf.GetConf().Registry.RegistryAddress[0]
 )
 
 func InitClient() {
@@ -34,16 +37,22 @@ func InitClient() {
 	})
 }
 func initCartClient() {
-	var opts []client.Option
-	r, err := consul.NewConsulResolver(conf.GetConf().Registry.RegistryAddress[0])
-	if err != nil {
-		panic(err)
+	// var opts []client.Option
+	// r, err := consul.NewConsulResolver(conf.GetConf().Registry.RegistryAddress[0])
+	// if err != nil {
+	// 	panic(err)
+	// }
+	// opts = append(opts, client.WithResolver(r))
+	// opts = append(opts, client.WithClientBasicInfo(&rpcinfo.EndpointBasicInfo{ServiceName: conf.GetConf().Kitex.Service}),
+	// 	client.WithTransportProtocol(transport.GRPC),
+	// 	client.WithMetaHandler(transmeta.ClientHTTP2Handler),
+	// )
+	opts := []client.Option{
+		client.WithSuite(clientsuite.CommonGrpcClientSuite{
+			CurrentServiceName: ServiceName,
+			RegistryAddr:       RegistryAddr,
+		}),
 	}
-	opts = append(opts, client.WithResolver(r))
-	opts = append(opts, client.WithClientBasicInfo(&rpcinfo.EndpointBasicInfo{ServiceName: conf.GetConf().Kitex.Service}),
-		client.WithTransportProtocol(transport.GRPC),
-		client.WithMetaHandler(transmeta.ClientHTTP2Handler),
-	)
 	CartClient, err = cartservice.NewClient("cart", opts...)
 	if err != nil {
 		panic(err)
@@ -51,16 +60,22 @@ func initCartClient() {
 
 }
 func initPaymentClient() {
-	var opts []client.Option
-	r, err := consul.NewConsulResolver(conf.GetConf().Registry.RegistryAddress[0])
-	if err != nil {
-		panic(err)
+	// var opts []client.Option
+	// r, err := consul.NewConsulResolver(conf.GetConf().Registry.RegistryAddress[0])
+	// if err != nil {
+	// 	panic(err)
+	// }
+	// opts = append(opts, client.WithResolver(r))
+	// opts = append(opts, client.WithClientBasicInfo(&rpcinfo.EndpointBasicInfo{ServiceName: conf.GetConf().Kitex.Service}),
+	// 	client.WithTransportProtocol(transport.GRPC),
+	// 	client.WithMetaHandler(transmeta.ClientHTTP2Handler),
+	// )
+	opts := []client.Option{
+		client.WithSuite(clientsuite.CommonGrpcClientSuite{
+			CurrentServiceName: ServiceName,
+			RegistryAddr:       RegistryAddr,
+		}),
 	}
-	opts = append(opts, client.WithResolver(r))
-	opts = append(opts, client.WithClientBasicInfo(&rpcinfo.EndpointBasicInfo{ServiceName: conf.GetConf().Kitex.Service}),
-		client.WithTransportProtocol(transport.GRPC),
-		client.WithMetaHandler(transmeta.ClientHTTP2Handler),
-	)
 	PaymentClient, err = paymentservice.NewClient("payment", opts...)
 	if err != nil {
 		panic(err)

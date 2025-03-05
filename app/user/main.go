@@ -6,28 +6,35 @@ import (
 
 	"github.com/cloudwego/biz-demo/gomall/app/user/biz/dal"
 	"github.com/cloudwego/biz-demo/gomall/app/user/conf"
+	"github.com/cloudwego/biz-demo/gomall/common/mtl"
+	"github.com/cloudwego/biz-demo/gomall/common/serversuite"
 	"github.com/cloudwego/biz-demo/gomall/rpc_gen/kitex_gen/user/userservice"
 	"github.com/cloudwego/kitex/pkg/klog"
-	"github.com/cloudwego/kitex/pkg/rpcinfo"
 	"github.com/cloudwego/kitex/server"
 	"github.com/joho/godotenv"
 	kitexlogrus "github.com/kitex-contrib/obs-opentelemetry/logging/logrus"
-	consul "github.com/kitex-contrib/registry-consul"
 	"go.uber.org/zap/zapcore"
 	"gopkg.in/natefinch/lumberjack.v2"
 )
 
+var (
+	ServiceName  = conf.GetConf().Kitex.Service
+	RegistryAddr = conf.GetConf().Registry.RegistryAddress[0]
+)
+
 func main() {
-	err := godotenv.Load()
-	if err != nil {
-		klog.Error(err.Error())
-	}
+	_ = godotenv.Load()
+	// if err != nil {
+	// 	klog.Error(err.Error())
+	// }
+	mtl.InitMetric(ServiceName, conf.GetConf().Kitex.MetricsPort, RegistryAddr)
+
 	dal.Init()
 	opts := kitexInit()
 
 	svr := userservice.NewServer(new(UserServiceImpl), opts...)
 
-	err = svr.Run()
+	err := svr.Run()
 	if err != nil {
 		klog.Error(err.Error())
 	}
@@ -39,18 +46,23 @@ func kitexInit() (opts []server.Option) {
 	if err != nil {
 		panic(err)
 	}
-	opts = append(opts, server.WithServiceAddr(addr))
+	// opts = append(opts, server.WithServiceAddr(addr))
 
-	// service info
-	opts = append(opts, server.WithServerBasicInfo(&rpcinfo.EndpointBasicInfo{
-		ServiceName: conf.GetConf().Kitex.Service,
+	// // service info
+	// opts = append(opts, server.WithServerBasicInfo(&rpcinfo.EndpointBasicInfo{
+	// 	ServiceName: conf.GetConf().Kitex.Service,
+	// }))
+
+	// r, err := consul.NewConsulRegister(conf.GetConf().Registry.RegistryAddress[0])
+	// if err != nil {
+	// 	klog.Error(err.Error())
+	// }
+	// opts = append(opts, server.WithRegistry(r))
+
+	opts = append(opts, server.WithServiceAddr(addr), server.WithSuite(serversuite.CommonServerSuite{
+		CurrentServiceName: ServiceName,
+		RegistryAddr:       RegistryAddr,
 	}))
-
-	r, err := consul.NewConsulRegister(conf.GetConf().Registry.RegistryAddress[0])
-	if err != nil {
-		klog.Error(err.Error())
-	}
-	opts = append(opts, server.WithRegistry(r))
 	// klog
 	logger := kitexlogrus.NewLogger()
 	klog.SetLogger(logger)
