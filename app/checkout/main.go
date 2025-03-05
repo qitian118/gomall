@@ -5,6 +5,7 @@ import (
 	"net"
 	"time"
 
+	"github.com/cloudwego/biz-demo/gomall/app/checkout/infra/mq"
 	"github.com/cloudwego/biz-demo/gomall/app/checkout/infra/rpc"
 	"github.com/cloudwego/biz-demo/gomall/common/mtl"
 	"github.com/cloudwego/biz-demo/gomall/common/serversuite"
@@ -30,6 +31,7 @@ func main() {
 	p := mtl.InitTracing(ServiceName)
 	defer p.Shutdown(context.Background())
 	rpc.InitClient()
+	mq.Init()
 	opts := kitexInit()
 
 	svr := checkoutservice.NewServer(new(CheckoutServiceImpl), opts...)
