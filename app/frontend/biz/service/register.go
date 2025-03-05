@@ -2,8 +2,8 @@ package service
 
 import (
 	"context"
-	"fmt"
 
+	"github.com/cloudwego/biz-demo/gomall/app/frontend/biz/utils"
 	auth "github.com/cloudwego/biz-demo/gomall/app/frontend/hertz_gen/frontend/auth"
 	common "github.com/cloudwego/biz-demo/gomall/app/frontend/hertz_gen/frontend/common"
 	"github.com/cloudwego/biz-demo/gomall/app/frontend/infra/rpc"
@@ -34,9 +34,14 @@ func (h *RegisterService) Run(req *auth.RegisterReq) (resp *common.Empty, err er
 	if err != nil {
 		return nil, err
 	}
-	fmt.Println("a new register")
+	// fmt.Println("a new register")
+	token, err := utils.GetToken(userResp.UserId, h.Context)
+	if err != nil {
+		return nil, err
+	}
 	session := sessions.Default(h.RequestContext)
 	session.Set("user_id", userResp.UserId)
+	session.Set("token", token)
 	err = session.Save()
 	if err != nil {
 		return nil, err
