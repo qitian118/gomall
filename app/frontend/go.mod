@@ -47,6 +47,7 @@ require (
 	github.com/gorilla/securecookie v1.1.2 // indirect
 	github.com/gorilla/sessions v1.2.2 // indirect
 	github.com/hertz-contrib/monitor-prometheus v0.1.3 // indirect
+	github.com/hertz-contrib/obs-opentelemetry/logging/logrus v0.1.1 // indirect
 	github.com/jinzhu/inflection v1.0.0 // indirect
 	github.com/jinzhu/now v1.1.5 // indirect
 	github.com/klauspost/cpuid/v2 v2.2.6 // indirect
@@ -63,6 +64,8 @@ require (
 	github.com/tidwall/match v1.1.1 // indirect
 	github.com/tidwall/pretty v1.2.1 // indirect
 	github.com/twitchyliquid64/golang-asm v0.15.1 // indirect
+	go.opentelemetry.io/otel v1.4.1 // indirect
+	go.opentelemetry.io/otel/trace v1.4.1 // indirect
 	go.uber.org/multierr v1.10.0 // indirect
 	golang.org/x/arch v0.6.0 // indirect
 	golang.org/x/sys v0.24.0 // indirect

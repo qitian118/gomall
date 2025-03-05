@@ -25,6 +25,7 @@ import (
 	"github.com/hertz-contrib/logger/accesslog"
 	hertzlogrus "github.com/hertz-contrib/logger/logrus"
 	prometheus "github.com/hertz-contrib/monitor-prometheus"
+	hertzobslogrus "github.com/hertz-contrib/obs-opentelemetry/logging/logrus"
 	hertztracing "github.com/hertz-contrib/obs-opentelemetry/tracing"
 	"github.com/hertz-contrib/pprof"
 	"github.com/hertz-contrib/sessions"
@@ -80,6 +81,7 @@ func main() {
 	// })
 
 	h.GET("/about", func(c context.Context, ctx *app.RequestContext) {
+		hlog.CtxInfof(c, "CloudWeGo shop about page")
 		ctx.HTML(consts.StatusOK, "about", frontendBizUtils.WarpResponse(c, ctx, utils.H{"Title": "About"}))
 	})
 
@@ -101,9 +103,16 @@ func registerMiddleware(h *server.Hertz) {
 	store, _ := redis.NewStore(10, "tcp", conf.GetConf().Redis.Address, "", []byte(os.Getenv("SESSION_SECRET")))
 	h.Use(sessions.New("qitian-shop", store))
 	// log
-	logger := hertzlogrus.NewLogger()
+	logger := hertzobslogrus.NewLogger(hertzobslogrus.WithLogger(hertzlogrus.NewLogger().Logger()))
+	// logger := hertzlogrus.NewLogger()
 	hlog.SetLogger(logger)
 	hlog.SetLevel(conf.LogLevel())
+	var flushInterval time.Duration
+	if os.Getenv("GO_ENV") == "online" {
+		flushInterval = time.Minute
+	} else {
+		flushInterval = time.Second
+	}
 	asyncWriter := &zapcore.BufferedWriteSyncer{
 		WS: zapcore.AddSync(&lumberjack.Logger{
 			Filename:   conf.GetConf().Hertz.LogFileName,
@@ -111,7 +120,7 @@ func registerMiddleware(h *server.Hertz) {
 			MaxBackups: conf.GetConf().Hertz.LogMaxBackups,
 			MaxAge:     conf.GetConf().Hertz.LogMaxAge,
 		}),
-		FlushInterval: time.Minute,
+		FlushInterval: flushInterval,
 	}
 	hlog.SetOutput(asyncWriter)
 	h.OnShutdown = append(h.OnShutdown, func(ctx context.Context) {
