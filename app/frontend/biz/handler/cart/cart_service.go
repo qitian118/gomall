@@ -63,5 +63,7 @@ func EmptyCart(ctx context.Context, c *app.RequestContext) {
 		utils.SendErrResponse(ctx, c, consts.StatusOK, err)
 		return
 	}
+	// 给客户端一个成功的提示
+	c.Set("success_message", "商品已成功添加到购物车")
 	c.Redirect(consts.StatusFound, []byte("/cart"))
 }
