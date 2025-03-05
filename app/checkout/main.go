@@ -4,6 +4,7 @@ import (
 	"net"
 	"time"
 
+	"github.com/cloudwego/biz-demo/gomall/app/checkout/infra/mq"
 	"github.com/cloudwego/biz-demo/gomall/app/checkout/infra/rpc"
 	"github.com/cloudwego/biz-demo/gomall/common/mtl"
 	"github.com/cloudwego/biz-demo/gomall/common/serversuite"
@@ -27,6 +28,7 @@ func main() {
 	_ = godotenv.Load()
 	mtl.InitMetric(ServiceName, conf.GetConf().Kitex.MetricsPort, RegistryAddr)
 	rpc.InitClient()
+	mq.Init()
 	opts := kitexInit()
 
 	svr := checkoutservice.NewServer(new(CheckoutServiceImpl), opts...)
