@@ -19,9 +19,8 @@ func TestGetProduct(t *testing.T) {
 	resp := w.Result()
 	t.Log(string(resp.Body()))
 
-	// todo edit your unit test.
-	// assert.DeepEqual(t, 200, resp.StatusCode())
-	// assert.DeepEqual(t, "null", string(resp.Body()))
+	
+	
 }
 
 func TestSearchProducts(t *testing.T) {
@@ -34,7 +33,6 @@ func TestSearchProducts(t *testing.T) {
 	resp := w.Result()
 	t.Log(string(resp.Body()))
 
-	// todo edit your unit test.
-	// assert.DeepEqual(t, 200, resp.StatusCode())
-	// assert.DeepEqual(t, "null", string(resp.Body()))
+	
+	
 }

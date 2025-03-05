@@ -19,7 +19,6 @@ func TestOrderList(t *testing.T) {
 	resp := w.Result()
 	t.Log(string(resp.Body()))
 
-	// todo edit your unit test.
-	// assert.DeepEqual(t, 200, resp.StatusCode())
-	// assert.DeepEqual(t, "null", string(resp.Body()))
+	assert.DeepEqual(t, 200, resp.StatusCode())
+	assert.DeepEqual(t, true, bytes.Contains(resp.Body(), []byte("orders")))
 }

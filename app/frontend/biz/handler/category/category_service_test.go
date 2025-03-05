@@ -20,6 +20,7 @@ func TestCategory(t *testing.T) {
 	t.Log(string(resp.Body()))
 
 	// todo edit your unit test.
-	// assert.DeepEqual(t, 200, resp.StatusCode())
-	// assert.DeepEqual(t, "null", string(resp.Body()))
+	assert.DeepEqual(t, 200, resp.StatusCode())
+	assert.DeepEqual(t, true, bytes.Contains(resp.Body(), []byte("Category")))
 }
+
