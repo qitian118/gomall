@@ -19,7 +19,11 @@ func TestHome(t *testing.T) {
 	resp := w.Result()
 	t.Log(string(resp.Body()))
 
-	// todo edit your unit test.
-	// assert.DeepEqual(t, 200, resp.StatusCode())
-	// assert.DeepEqual(t, "null", string(resp.Body()))
+	assert.DeepEqual(t, 200, resp.StatusCode())
+
+	// 检查响应体中是否包含 title
+	assert.DeepEqual(t, true, bytes.Contains(resp.Body(), []byte("Hot sale")))
+
+
+	assert.DeepEqual(t, true, bytes.Contains(resp.Body(), []byte("items")))
 }
