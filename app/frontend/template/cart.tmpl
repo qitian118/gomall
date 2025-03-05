@@ -1,5 +1,12 @@
 {{ define "cart" }}
     {{ template "header" . }}
+    
+    {{if .success_message}}
+    <div class="alert alert-success alert-dismissible fade show mb-4" role="alert">
+        {{.success_message}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+    {{end}}
     <div class="row">
         <ul class="list-group">
             {{ range $.items }}

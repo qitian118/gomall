@@ -23,6 +23,10 @@
                             <img src="{{ .item.Picture }}" class="d-block w-100" alt="...">
                         </div>
                     </div>
+
+                       
+
+
                     <button class="carousel-control-prev" type="button" data-bs-target="#productPicture"
                             data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -40,6 +44,18 @@
                         <h5 class="card-title">{{ .item.Name }}</h5>
                         <p class="card-text">{{ .item.Description }}</p>
                         <p class="card-text">${{ .item.Price }}</p>
+                        
+                         <div class="row mb-4">
+                            <div class="col-md-12">
+                                {{if .success_message}}
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    {{.success_message}}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                                </div>
+                                {{end}}
+                            </div>
+                        </div>
+
                         <input type="hidden" value="{{ .item.Id }}" name="productId">
                         <label for="productNum">数量：</label>
                         <input type="number" class="form-control mt-3" id="productNum" name="productNum" value="1"
