@@ -6,6 +6,7 @@ import (
 
 	"github.com/cloudwego/hertz/pkg/app/server"
 	//"github.com/cloudwego/hertz/pkg/common/test/assert"
+	"github.com/cloudwego/hertz/pkg/common/test/assert"
 	"github.com/cloudwego/hertz/pkg/common/ut"
 )
 
@@ -23,4 +24,3 @@ func TestCategory(t *testing.T) {
 	assert.DeepEqual(t, 200, resp.StatusCode())
 	assert.DeepEqual(t, true, bytes.Contains(resp.Body(), []byte("Category")))
 }
-

@@ -6,6 +6,7 @@ import (
 
 	"github.com/cloudwego/hertz/pkg/app/server"
 	//"github.com/cloudwego/hertz/pkg/common/test/assert"
+	"github.com/cloudwego/hertz/pkg/common/test/assert"
 	"github.com/cloudwego/hertz/pkg/common/ut"
 )
 
@@ -23,7 +24,6 @@ func TestHome(t *testing.T) {
 
 	// 检查响应体中是否包含 title
 	assert.DeepEqual(t, true, bytes.Contains(resp.Body(), []byte("Hot sale")))
-
 
 	assert.DeepEqual(t, true, bytes.Contains(resp.Body(), []byte("items")))
 }
