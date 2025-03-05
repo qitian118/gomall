@@ -1,0 +1,18 @@
+{{define "userinfo"}}
+{{template "header" .}}
+<div class="user-info">
+    <h2>用户信息</h2>
+    <div class="info-item">
+        <span class="label">用户ID：</span>
+        <span class="value">{{.user_id}}</span>
+    </div>
+    <div class="info-item">
+        <span class="label">电子邮箱：</span>
+        <span class="value">{{.email}}</span>
+    </div>
+</div>
+
+
+
+{{template "footer"}}
+{{end}}

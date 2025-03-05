@@ -96,6 +96,10 @@ func main() {
 	h.GET("/sign-up", func(c context.Context, ctx *app.RequestContext) {
 		ctx.HTML(consts.StatusOK, "sign-up", utils.H{"Title": "Sign Up"})
 	})
+	h.GET("/userinfo", func(c context.Context, ctx *app.RequestContext) {
+		userinfo := frontendBizUtils.UserInfo(c, ctx, utils.H{"Title": "UserInfo"})
+		ctx.HTML(consts.StatusOK, "userinfo", userinfo)
+	})
 	h.Spin()
 }
 
