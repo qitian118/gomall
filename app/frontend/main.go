@@ -25,6 +25,7 @@ import (
 	"github.com/hertz-contrib/logger/accesslog"
 	hertzlogrus "github.com/hertz-contrib/logger/logrus"
 	prometheus "github.com/hertz-contrib/monitor-prometheus"
+	hertztracing "github.com/hertz-contrib/obs-opentelemetry/tracing"
 	"github.com/hertz-contrib/pprof"
 	"github.com/hertz-contrib/sessions"
 	"github.com/hertz-contrib/sessions/redis"
@@ -41,19 +42,25 @@ var (
 
 func main() {
 	_ = godotenv.Load()
+	p := mtl.InitTracing(ServiceName)
+	defer p.Shutdown(context.Background())
 	// init dal
 	// dal.Init()
 	consul, registryInfo := mtl.InitMetric(ServiceName, MetricsPort, RegistryAddr)
 	defer consul.Deregister(registryInfo)
 	rpc.Init()
 	address := conf.GetConf().Hertz.Address
+
+	tracer, cfg := hertztracing.NewServerTracer()
+
 	h := server.New(server.WithHostPorts(address), server.WithTracer(prometheus.NewServerTracer(
 		"",
 		"",
 		prometheus.WithDisableServer(true),
 		prometheus.WithRegistry(mtl.Registry),
-	)))
+	)), tracer)
 
+	h.Use(hertztracing.ServerMiddleware(cfg))
 	registerMiddleware(h)
 
 	// add a ping route to test
