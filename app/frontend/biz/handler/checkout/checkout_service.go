@@ -3,12 +3,12 @@ package checkout
 import (
 	"context"
 
-	"github.com/cloudwego/biz-demo/gomall/app/frontend/biz/service"
-	"github.com/cloudwego/biz-demo/gomall/app/frontend/biz/utils"
-	checkout "github.com/cloudwego/biz-demo/gomall/app/frontend/hertz_gen/frontend/checkout"
-	common "github.com/cloudwego/biz-demo/gomall/app/frontend/hertz_gen/frontend/common"
 	"github.com/cloudwego/hertz/pkg/app"
 	"github.com/cloudwego/hertz/pkg/protocol/consts"
+	"github.com/qitian118/gomall/app/frontend/biz/service"
+	"github.com/qitian118/gomall/app/frontend/biz/utils"
+	checkout "github.com/qitian118/gomall/app/frontend/hertz_gen/frontend/checkout"
+	common "github.com/qitian118/gomall/app/frontend/hertz_gen/frontend/common"
 )
 
 // Checkout .

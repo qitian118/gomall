@@ -3,8 +3,8 @@ package redis
 import (
 	"context"
 
+	"github.com/qitian118/gomall/app/user/conf"
 	"github.com/redis/go-redis/v9"
-	"github.com/cloudwego/biz-demo/gomall/app/user/conf"
 )
 
 var (

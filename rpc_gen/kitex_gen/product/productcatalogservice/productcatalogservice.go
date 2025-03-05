@@ -5,7 +5,7 @@ package productcatalogservice
 import (
 	"context"
 	"errors"
-	product "github.com/cloudwego/biz-demo/gomall/rpc_gen/kitex_gen/product"
+	product "github.com/qitian118/gomall/rpc_gen/kitex_gen/product"
 	client "github.com/cloudwego/kitex/client"
 	kitex "github.com/cloudwego/kitex/pkg/serviceinfo"
 	streaming "github.com/cloudwego/kitex/pkg/streaming"

@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/cloudwego/biz-demo/gomall/app/order/biz/model"
-	"github.com/cloudwego/biz-demo/gomall/app/order/conf"
 	"github.com/cloudwego/kitex/pkg/klog"
+	"github.com/qitian118/gomall/app/order/biz/model"
+	"github.com/qitian118/gomall/app/order/conf"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"gorm.io/plugin/opentelemetry/tracing"

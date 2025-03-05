@@ -5,17 +5,17 @@ import (
 	"net"
 	"time"
 
-	"github.com/cloudwego/biz-demo/gomall/app/checkout/infra/mq"
-	"github.com/cloudwego/biz-demo/gomall/app/checkout/infra/rpc"
-	"github.com/cloudwego/biz-demo/gomall/common/mtl"
-	"github.com/cloudwego/biz-demo/gomall/common/serversuite"
 	"github.com/joho/godotenv"
+	"github.com/qitian118/gomall/app/checkout/infra/mq"
+	"github.com/qitian118/gomall/app/checkout/infra/rpc"
+	"github.com/qitian118/gomall/common/mtl"
+	"github.com/qitian118/gomall/common/serversuite"
 
-	"github.com/cloudwego/biz-demo/gomall/app/checkout/conf"
-	"github.com/cloudwego/biz-demo/gomall/rpc_gen/kitex_gen/checkout/checkoutservice"
 	"github.com/cloudwego/kitex/pkg/klog"
 	"github.com/cloudwego/kitex/server"
 	kitexlogrus "github.com/kitex-contrib/obs-opentelemetry/logging/logrus"
+	"github.com/qitian118/gomall/app/checkout/conf"
+	"github.com/qitian118/gomall/rpc_gen/kitex_gen/checkout/checkoutservice"
 	"go.uber.org/zap/zapcore"
 	"gopkg.in/natefinch/lumberjack.v2"
 )

@@ -5,7 +5,7 @@ package authservice
 import (
 	"context"
 	"errors"
-	auth "github.com/cloudwego/biz-demo/gomall/rpc_gen/kitex_gen/auth"
+	auth "github.com/qitian118/gomall/rpc_gen/kitex_gen/auth"
 	client "github.com/cloudwego/kitex/client"
 	kitex "github.com/cloudwego/kitex/pkg/serviceinfo"
 	streaming "github.com/cloudwego/kitex/pkg/streaming"

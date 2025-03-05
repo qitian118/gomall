@@ -3,9 +3,9 @@ package service
 import (
 	"context"
 
-	"github.com/cloudwego/biz-demo/gomall/app/product/biz/dal/mysql"
-	"github.com/cloudwego/biz-demo/gomall/app/product/biz/model"
-	product "github.com/cloudwego/biz-demo/gomall/rpc_gen/kitex_gen/product"
+	"github.com/qitian118/gomall/app/product/biz/dal/mysql"
+	"github.com/qitian118/gomall/app/product/biz/model"
+	product "github.com/qitian118/gomall/rpc_gen/kitex_gen/product"
 )
 
 type ListProductsService struct {

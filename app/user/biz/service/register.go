@@ -4,9 +4,9 @@ import (
 	"context"
 	"errors"
 
-	"github.com/cloudwego/biz-demo/gomall/app/user/biz/dal/mysql"
-	"github.com/cloudwego/biz-demo/gomall/app/user/biz/model"
-	user "github.com/cloudwego/biz-demo/gomall/rpc_gen/kitex_gen/user"
+	"github.com/qitian118/gomall/app/user/biz/dal/mysql"
+	"github.com/qitian118/gomall/app/user/biz/model"
+	user "github.com/qitian118/gomall/rpc_gen/kitex_gen/user"
 	"golang.org/x/crypto/bcrypt"
 )
 

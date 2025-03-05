@@ -2,7 +2,7 @@
 package emailservice
 
 import (
-	email "github.com/cloudwego/biz-demo/gomall/rpc_gen/kitex_gen/email"
+	email "github.com/qitian118/gomall/rpc_gen/kitex_gen/email"
 	server "github.com/cloudwego/kitex/server"
 )
 

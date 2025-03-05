@@ -3,8 +3,8 @@
 package order
 
 import (
-	"github.com/cloudwego/biz-demo/gomall/app/frontend/middleware"
 	"github.com/cloudwego/hertz/pkg/app"
+	"github.com/qitian118/gomall/app/frontend/middleware"
 )
 
 func rootMw() []app.HandlerFunc {

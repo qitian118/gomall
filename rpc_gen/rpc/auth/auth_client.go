@@ -2,11 +2,12 @@ package auth
 
 import (
 	"context"
-	auth "github.com/cloudwego/biz-demo/gomall/rpc_gen/kitex_gen/auth"
 
-	"github.com/cloudwego/biz-demo/gomall/rpc_gen/kitex_gen/auth/authservice"
+	auth "github.com/qitian118/gomall/rpc_gen/kitex_gen/auth"
+
 	"github.com/cloudwego/kitex/client"
 	"github.com/cloudwego/kitex/client/callopt"
+	"github.com/qitian118/gomall/rpc_gen/kitex_gen/auth/authservice"
 )
 
 type RPCClient interface {

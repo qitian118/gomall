@@ -2,7 +2,7 @@
 package orderservice
 
 import (
-	order "github.com/cloudwego/biz-demo/gomall/rpc_gen/kitex_gen/order"
+	order "github.com/qitian118/gomall/rpc_gen/kitex_gen/order"
 	server "github.com/cloudwego/kitex/server"
 )
 

@@ -2,8 +2,9 @@ package service
 
 import (
 	"context"
-	payment "github.com/cloudwego/biz-demo/gomall/rpc_gen/kitex_gen/payment"
 	"testing"
+
+	payment "github.com/qitian118/gomall/rpc_gen/kitex_gen/payment"
 )
 
 func TestCharge_Run(t *testing.T) {

@@ -1,14 +1,14 @@
 package email
 
 import (
-	"github.com/cloudwego/biz-demo/gomall/app/email/infra/mq"
-	"github.com/cloudwego/biz-demo/gomall/app/email/infra/notify"
 	"github.com/cloudwego/kitex/pkg/klog"
 	"github.com/cloudwego/kitex/server"
 	"github.com/nats-io/nats.go"
+	"github.com/qitian118/gomall/app/email/infra/mq"
+	"github.com/qitian118/gomall/app/email/infra/notify"
 	"google.golang.org/protobuf/proto"
 
-	"github.com/cloudwego/biz-demo/gomall/rpc_gen/kitex_gen/email"
+	"github.com/qitian118/gomall/rpc_gen/kitex_gen/email"
 )
 
 func ConsumerInit() {

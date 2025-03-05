@@ -2,14 +2,15 @@ package service
 
 import (
 	"context"
-	"github.com/cloudwego/biz-demo/gomall/app/payment/biz/dal/mysql"
-	"github.com/cloudwego/biz-demo/gomall/app/payment/biz/model"
-	payment "github.com/cloudwego/biz-demo/gomall/rpc_gen/kitex_gen/payment"
+	"strconv"
+	"time"
+
 	"github.com/cloudwego/kitex/pkg/kerrors"
 	creditcard "github.com/durango/go-credit-card"
 	"github.com/google/uuid"
-	"strconv"
-	"time"
+	"github.com/qitian118/gomall/app/payment/biz/dal/mysql"
+	"github.com/qitian118/gomall/app/payment/biz/model"
+	payment "github.com/qitian118/gomall/rpc_gen/kitex_gen/payment"
 )
 
 type ChargeService struct {

@@ -1,4 +1,4 @@
-module github.com/cloudwego/biz-demo/gomall/common
+module github.com/qitian118/gomall/common
 
 go 1.24.0
 

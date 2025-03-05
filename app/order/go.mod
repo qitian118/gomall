@@ -1,17 +1,17 @@
-module github.com/cloudwego/biz-demo/gomall/app/order
+module github.com/qitian118/gomall/app/order
 
 go 1.24.0
 
 replace (
 	github.com/apache/thrift => github.com/apache/thrift v0.13.0
-	github.com/cloudwego/biz-demo/gomall/common => ../../common
-	github.com/cloudwego/biz-demo/gomall/rpc-gen => ../../rpc_gen/
+	github.com/qitian118/gomall/common => ../../common
+	github.com/qitian118/gomall/rpc-gen => ../../rpc_gen/
 
 )
 
 require (
-	github.com/cloudwego/biz-demo/gomall/common v0.0.0-00010101000000-000000000000
-	github.com/cloudwego/biz-demo/gomall/rpc_gen v0.0.0-20250221030954-58f21ff9d9c9
+	github.com/qitian118/gomall/common v0.0.0-00010101000000-000000000000
+	github.com/qitian118/gomall/rpc_gen v0.0.0-20250221030954-58f21ff9d9c9
 	github.com/cloudwego/kitex v0.12.2
 	github.com/google/uuid v1.1.2
 	github.com/joho/godotenv v1.5.1

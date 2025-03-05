@@ -2,9 +2,10 @@ package product
 
 import (
 	"context"
-	product "github.com/cloudwego/biz-demo/gomall/rpc_gen/kitex_gen/product"
+
 	"github.com/cloudwego/kitex/client/callopt"
 	"github.com/cloudwego/kitex/pkg/klog"
+	product "github.com/qitian118/gomall/rpc_gen/kitex_gen/product"
 )
 
 func ListProducts(ctx context.Context, req *product.ListProductsReq, callOptions ...callopt.Option) (resp *product.ListProductsResp, err error) {

@@ -4,8 +4,8 @@ import (
 	"context"
 	"time"
 
-	auth "github.com/cloudwego/biz-demo/gomall/rpc_gen/kitex_gen/auth"
 	"github.com/golang-jwt/jwt/v5"
+	auth "github.com/qitian118/gomall/rpc_gen/kitex_gen/auth"
 )
 
 type DeliverTokenByRPCService struct {

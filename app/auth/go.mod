@@ -1,15 +1,15 @@
-module github.com/cloudwego/biz-demo/gomall/app/auth
+module github.com/qitian118/gomall/app/auth
 
 go 1.24.0
 
 replace (
 	github.com/apache/thrift => github.com/apache/thrift v0.13.0
-	github.com/cloudwego/biz-demo/gomall/rpc_gen => ../../rpc_gen
+	github.com/qitian118/gomall/rpc_gen => ../../rpc_gen
 )
 
 require (
-	github.com/cloudwego/biz-demo/gomall/common v0.0.0-00010101000000-000000000000
-	github.com/cloudwego/biz-demo/gomall/rpc_gen v0.0.0-00010101000000-000000000000
+	github.com/qitian118/gomall/common v0.0.0-00010101000000-000000000000
+	github.com/qitian118/gomall/rpc_gen v0.0.0-00010101000000-000000000000
 	github.com/cloudwego/hertz v0.9.6
 	github.com/cloudwego/kitex v0.12.3
 	github.com/golang-jwt/jwt/v5 v5.2.1
@@ -99,4 +99,4 @@ require (
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
 
-replace github.com/cloudwego/biz-demo/gomall/common => ../../common
+replace github.com/qitian118/gomall/common => ../../common

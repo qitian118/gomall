@@ -3,11 +3,11 @@ package middleware
 import (
 	"context"
 
-	"github.com/cloudwego/biz-demo/gomall/app/frontend/infra/rpc"
-	frontendUtils "github.com/cloudwego/biz-demo/gomall/app/frontend/utils"
-	"github.com/cloudwego/biz-demo/gomall/rpc_gen/kitex_gen/auth"
 	"github.com/cloudwego/hertz/pkg/app"
 	"github.com/hertz-contrib/sessions"
+	"github.com/qitian118/gomall/app/frontend/infra/rpc"
+	frontendUtils "github.com/qitian118/gomall/app/frontend/utils"
+	"github.com/qitian118/gomall/rpc_gen/kitex_gen/auth"
 )
 
 func GlobalAuth() app.HandlerFunc {

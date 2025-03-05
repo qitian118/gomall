@@ -3,16 +3,16 @@ package rpc
 import (
 	"sync"
 
-	"github.com/cloudwego/biz-demo/gomall/app/frontend/conf"
-	frontendUtils "github.com/cloudwego/biz-demo/gomall/app/frontend/utils"
-	"github.com/cloudwego/biz-demo/gomall/common/clientsuite"
-	"github.com/cloudwego/biz-demo/gomall/rpc_gen/kitex_gen/auth/authservice"
-	"github.com/cloudwego/biz-demo/gomall/rpc_gen/kitex_gen/cart/cartservice"
-	"github.com/cloudwego/biz-demo/gomall/rpc_gen/kitex_gen/checkout/checkoutservice"
-	"github.com/cloudwego/biz-demo/gomall/rpc_gen/kitex_gen/order/orderservice"
-	"github.com/cloudwego/biz-demo/gomall/rpc_gen/kitex_gen/product/productcatalogservice"
-	"github.com/cloudwego/biz-demo/gomall/rpc_gen/kitex_gen/user/userservice"
 	"github.com/cloudwego/kitex/client"
+	"github.com/qitian118/gomall/app/frontend/conf"
+	frontendUtils "github.com/qitian118/gomall/app/frontend/utils"
+	"github.com/qitian118/gomall/common/clientsuite"
+	"github.com/qitian118/gomall/rpc_gen/kitex_gen/auth/authservice"
+	"github.com/qitian118/gomall/rpc_gen/kitex_gen/cart/cartservice"
+	"github.com/qitian118/gomall/rpc_gen/kitex_gen/checkout/checkoutservice"
+	"github.com/qitian118/gomall/rpc_gen/kitex_gen/order/orderservice"
+	"github.com/qitian118/gomall/rpc_gen/kitex_gen/product/productcatalogservice"
+	"github.com/qitian118/gomall/rpc_gen/kitex_gen/user/userservice"
 )
 
 var (

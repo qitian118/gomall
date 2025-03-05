@@ -3,13 +3,13 @@ package service
 import (
 	"context"
 
-	"github.com/cloudwego/biz-demo/gomall/app/frontend/hertz_gen/frontend/checkout"
-	"github.com/cloudwego/biz-demo/gomall/app/frontend/infra/rpc"
-	frontendutils "github.com/cloudwego/biz-demo/gomall/app/frontend/utils"
-	rpccheckout "github.com/cloudwego/biz-demo/gomall/rpc_gen/kitex_gen/checkout"
-	rpcpayment "github.com/cloudwego/biz-demo/gomall/rpc_gen/kitex_gen/payment"
 	"github.com/cloudwego/hertz/pkg/app"
 	"github.com/cloudwego/hertz/pkg/common/utils"
+	"github.com/qitian118/gomall/app/frontend/hertz_gen/frontend/checkout"
+	"github.com/qitian118/gomall/app/frontend/infra/rpc"
+	frontendutils "github.com/qitian118/gomall/app/frontend/utils"
+	rpccheckout "github.com/qitian118/gomall/rpc_gen/kitex_gen/checkout"
+	rpcpayment "github.com/qitian118/gomall/rpc_gen/kitex_gen/payment"
 )
 
 type CheckoutWaitingService struct {

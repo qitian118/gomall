@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/cloudwego/biz-demo/gomall/app/cart/biz/model"
-	"github.com/cloudwego/biz-demo/gomall/app/cart/conf"
+	"github.com/qitian118/gomall/app/cart/biz/model"
+	"github.com/qitian118/gomall/app/cart/conf"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"gorm.io/plugin/opentelemetry/tracing"

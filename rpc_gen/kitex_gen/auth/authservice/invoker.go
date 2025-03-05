@@ -3,7 +3,7 @@
 package authservice
 
 import (
-	auth "github.com/cloudwego/biz-demo/gomall/rpc_gen/kitex_gen/auth"
+	auth "github.com/qitian118/gomall/rpc_gen/kitex_gen/auth"
 	server "github.com/cloudwego/kitex/server"
 )
 

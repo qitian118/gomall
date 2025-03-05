@@ -3,17 +3,17 @@ package service
 import (
 	"context"
 
-	"github.com/cloudwego/biz-demo/gomall/app/checkout/infra/mq"
-	"github.com/cloudwego/biz-demo/gomall/app/checkout/infra/rpc"
-	"github.com/cloudwego/biz-demo/gomall/rpc_gen/kitex_gen/cart"
-	checkout "github.com/cloudwego/biz-demo/gomall/rpc_gen/kitex_gen/checkout"
-	"github.com/cloudwego/biz-demo/gomall/rpc_gen/kitex_gen/email"
-	"github.com/cloudwego/biz-demo/gomall/rpc_gen/kitex_gen/order"
-	"github.com/cloudwego/biz-demo/gomall/rpc_gen/kitex_gen/payment"
-	"github.com/cloudwego/biz-demo/gomall/rpc_gen/kitex_gen/product"
 	"github.com/cloudwego/kitex/pkg/kerrors"
 	"github.com/cloudwego/kitex/pkg/klog"
 	"github.com/nats-io/nats.go"
+	"github.com/qitian118/gomall/app/checkout/infra/mq"
+	"github.com/qitian118/gomall/app/checkout/infra/rpc"
+	"github.com/qitian118/gomall/rpc_gen/kitex_gen/cart"
+	checkout "github.com/qitian118/gomall/rpc_gen/kitex_gen/checkout"
+	"github.com/qitian118/gomall/rpc_gen/kitex_gen/email"
+	"github.com/qitian118/gomall/rpc_gen/kitex_gen/order"
+	"github.com/qitian118/gomall/rpc_gen/kitex_gen/payment"
+	"github.com/qitian118/gomall/rpc_gen/kitex_gen/product"
 	"google.golang.org/protobuf/proto"
 )
 

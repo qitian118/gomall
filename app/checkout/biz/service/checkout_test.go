@@ -3,7 +3,8 @@ package service
 import (
 	"context"
 	"testing"
-	checkout "github.com/cloudwego/biz-demo/gomall/rpc_gen/kitex_gen/checkout"
+
+	checkout "github.com/qitian118/gomall/rpc_gen/kitex_gen/checkout"
 )
 
 func TestCheckout_Run(t *testing.T) {

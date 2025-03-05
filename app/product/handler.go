@@ -2,8 +2,9 @@ package main
 
 import (
 	"context"
-	product "github.com/cloudwego/biz-demo/gomall/rpc_gen/kitex_gen/product"
-	"github.com/cloudwego/biz-demo/gomall/app/product/biz/service"
+
+	"github.com/qitian118/gomall/app/product/biz/service"
+	product "github.com/qitian118/gomall/rpc_gen/kitex_gen/product"
 )
 
 // ProductCatalogServiceImpl implements the last service interface defined in the IDL.

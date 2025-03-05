@@ -4,9 +4,9 @@ import (
 	"context"
 	"testing"
 
-	"github.com/cloudwego/biz-demo/gomall/app/user/biz/dal/mysql"
-	user "github.com/cloudwego/biz-demo/gomall/rpc_gen/kitex_gen/user"
 	"github.com/joho/godotenv"
+	"github.com/qitian118/gomall/app/user/biz/dal/mysql"
+	user "github.com/qitian118/gomall/rpc_gen/kitex_gen/user"
 )
 
 func TestRegister_Run(t *testing.T) {

@@ -3,12 +3,12 @@ package service
 import (
 	"context"
 
-	"github.com/cloudwego/biz-demo/gomall/app/cart/biz/dal/mysql"
-	"github.com/cloudwego/biz-demo/gomall/app/cart/biz/model"
-	"github.com/cloudwego/biz-demo/gomall/app/cart/infra/rpc"
-	cart "github.com/cloudwego/biz-demo/gomall/rpc_gen/kitex_gen/cart"
-	"github.com/cloudwego/biz-demo/gomall/rpc_gen/kitex_gen/product"
 	"github.com/cloudwego/kitex/pkg/kerrors"
+	"github.com/qitian118/gomall/app/cart/biz/dal/mysql"
+	"github.com/qitian118/gomall/app/cart/biz/model"
+	"github.com/qitian118/gomall/app/cart/infra/rpc"
+	cart "github.com/qitian118/gomall/rpc_gen/kitex_gen/cart"
+	"github.com/qitian118/gomall/rpc_gen/kitex_gen/product"
 )
 
 type AddItemService struct {

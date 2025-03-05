@@ -1,10 +1,10 @@
-module github.com/cloudwego/biz-demo/gomall/app/frontend
+module github.com/qitian118/gomall/app/frontend
 
 go 1.23.4
 
 replace (
 	github.com/apache/thrift => github.com/apache/thrift v0.13.0
-	github.com/cloudwego/biz-demo/gomall/rpc-gen => ../../rpc_gen/
+	github.com/qitian118/gomall/rpc-gen => ../../rpc_gen/
 )
 
 require (
@@ -72,4 +72,4 @@ require (
 	golang.org/x/text v0.14.0 // indirect
 )
 
-replace github.com/cloudwego/biz-demo/gomall/common => ../../common
+replace github.com/qitian118/gomall/common => ../../common

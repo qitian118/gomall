@@ -3,7 +3,8 @@ package service
 import (
 	"context"
 	"testing"
-	auth "github.com/cloudwego/biz-demo/gomall/rpc_gen/kitex_gen/auth"
+
+	auth "github.com/qitian118/gomall/rpc_gen/kitex_gen/auth"
 )
 
 func TestVerifyTokenByRPC_Run(t *testing.T) {

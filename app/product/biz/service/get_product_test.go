@@ -3,7 +3,8 @@ package service
 import (
 	"context"
 	"testing"
-	product "github.com/cloudwego/biz-demo/gomall/rpc_gen/kitex_gen/product"
+
+	product "github.com/qitian118/gomall/rpc_gen/kitex_gen/product"
 )
 
 func TestGetProduct_Run(t *testing.T) {

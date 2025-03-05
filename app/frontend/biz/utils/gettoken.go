@@ -3,9 +3,9 @@ package utils
 import (
 	"context"
 
-	rpcauth "github.com/cloudwego/biz-demo/gomall/rpc_gen/kitex_gen/auth"
+	rpcauth "github.com/qitian118/gomall/rpc_gen/kitex_gen/auth"
 
-	"github.com/cloudwego/biz-demo/gomall/app/frontend/infra/rpc"
+	"github.com/qitian118/gomall/app/frontend/infra/rpc"
 )
 
 func GetToken(userid int32, c context.Context) (string, error) {

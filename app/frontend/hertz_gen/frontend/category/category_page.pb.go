@@ -7,8 +7,8 @@
 package category
 
 import (
-	_ "github.com/cloudwego/biz-demo/gomall/app/frontend/hertz_gen/api"
-	common "github.com/cloudwego/biz-demo/gomall/app/frontend/hertz_gen/frontend/common"
+	_ "github.com/qitian118/gomall/app/frontend/hertz_gen/api"
+	common "github.com/qitian118/gomall/app/frontend/hertz_gen/frontend/common"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"

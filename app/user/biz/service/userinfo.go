@@ -3,9 +3,9 @@ package service
 import (
 	"context"
 
-	"github.com/cloudwego/biz-demo/gomall/app/user/biz/dal/mysql"
-	"github.com/cloudwego/biz-demo/gomall/app/user/biz/model"
-	user "github.com/cloudwego/biz-demo/gomall/rpc_gen/kitex_gen/user"
+	"github.com/qitian118/gomall/app/user/biz/dal/mysql"
+	"github.com/qitian118/gomall/app/user/biz/model"
+	user "github.com/qitian118/gomall/rpc_gen/kitex_gen/user"
 )
 
 type UserInfoService struct {

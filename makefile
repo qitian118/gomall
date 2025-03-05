@@ -1,6 +1,6 @@
-export ROOT_MOD=github.com/cloudwego/biz-demo/gomall
+export ROOT_MOD=github.com/qitian118/gomall
 .PHONY:gen_frontend
-gen_frontend:cwgo server --type HTTP --idl ../../idl/frontend/cart.proto --service frontend -module github.com/cloudwego/biz-demo/gomall/app/frontend -I ../../idl
+gen_frontend:cwgo server --type HTTP --idl ../../idl/frontend/cart.proto --service frontend -module github.com/qitian118/gomall/app/frontend -I ../../idl
 
 .PHONY: gen-demo-proto
 gen-demo-proto:
@@ -21,11 +21,11 @@ gen-frontend:
 .PHONY: gen-user
 gen-user:
 	@cd rpc_gen && cwgo client --type RPC --service user --module ${ROOT_MOD}/rpc_gen -I ../idl --idl ../idl/user.proto
-	@cd app/user && go mod init github.com/cloudwego/biz-demo/gomall/app/user && cwgo server --type RPC  --service user --module  ${ROOT_MOD}/app/user  --pass "-use  ${ROOT_MOD}/rpc_gen/kitex_gen" -I ../../idl  --idl ../../idl/user.proto
+	@cd app/user && go mod init github.com/qitian118/gomall/app/user && cwgo server --type RPC  --service user --module  ${ROOT_MOD}/app/user  --pass "-use  ${ROOT_MOD}/rpc_gen/kitex_gen" -I ../../idl  --idl ../../idl/user.proto
 .PHONY: gen-order
 gen-order:
 	@cd rpc_gen && cwgo client --type RPC --service order --module ${ROOT_MOD}/rpc_gen -I ../idl --idl ../idl/order.proto
-	@cd app/order && go mod init github.com/cloudwego/biz-demo/gomall/app/order && cwgo server --type RPC  --service order --module  ${ROOT_MOD}/app/order  --pass "-use  ${ROOT_MOD}/rpc_gen/kitex_gen" -I ../../idl  --idl ../../idl/order.proto
+	@cd app/order && go mod init github.com/qitian118/gomall/app/order && cwgo server --type RPC  --service order --module  ${ROOT_MOD}/app/order  --pass "-use  ${ROOT_MOD}/rpc_gen/kitex_gen" -I ../../idl  --idl ../../idl/order.proto
 
 .PHONY: gen-payment
 gen-payment:

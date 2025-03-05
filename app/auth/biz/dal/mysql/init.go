@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/cloudwego/biz-demo/gomall/app/auth/conf"
 	"github.com/cloudwego/hertz/pkg/common/hlog"
+	"github.com/qitian118/gomall/app/auth/conf"
 
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"

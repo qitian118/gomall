@@ -8,13 +8,13 @@ import (
 	"github.com/cloudwego/kitex/transport"
 	consul "github.com/kitex-contrib/registry-consul"
 
-	"github.com/cloudwego/biz-demo/gomall/app/checkout/conf"
-	"github.com/cloudwego/biz-demo/gomall/common/clientsuite"
-	"github.com/cloudwego/biz-demo/gomall/rpc_gen/kitex_gen/cart/cartservice"
-	"github.com/cloudwego/biz-demo/gomall/rpc_gen/kitex_gen/order/orderservice"
-	"github.com/cloudwego/biz-demo/gomall/rpc_gen/kitex_gen/payment/paymentservice"
-	"github.com/cloudwego/biz-demo/gomall/rpc_gen/kitex_gen/product/productcatalogservice"
 	"github.com/cloudwego/kitex/client"
+	"github.com/qitian118/gomall/app/checkout/conf"
+	"github.com/qitian118/gomall/common/clientsuite"
+	"github.com/qitian118/gomall/rpc_gen/kitex_gen/cart/cartservice"
+	"github.com/qitian118/gomall/rpc_gen/kitex_gen/order/orderservice"
+	"github.com/qitian118/gomall/rpc_gen/kitex_gen/payment/paymentservice"
+	"github.com/qitian118/gomall/rpc_gen/kitex_gen/product/productcatalogservice"
 )
 
 var (

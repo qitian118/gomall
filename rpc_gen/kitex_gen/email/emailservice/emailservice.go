@@ -5,7 +5,7 @@ package emailservice
 import (
 	"context"
 	"errors"
-	email "github.com/cloudwego/biz-demo/gomall/rpc_gen/kitex_gen/email"
+	email "github.com/qitian118/gomall/rpc_gen/kitex_gen/email"
 	client "github.com/cloudwego/kitex/client"
 	kitex "github.com/cloudwego/kitex/pkg/serviceinfo"
 	streaming "github.com/cloudwego/kitex/pkg/streaming"

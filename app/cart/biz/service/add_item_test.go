@@ -3,7 +3,8 @@ package service
 import (
 	"context"
 	"testing"
-	cart "github.com/cloudwego/biz-demo/gomall/rpc_gen/kitex_gen/cart"
+
+	cart "github.com/qitian118/gomall/rpc_gen/kitex_gen/cart"
 )
 
 func TestAddItem_Run(t *testing.T) {
